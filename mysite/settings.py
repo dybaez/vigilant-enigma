@@ -95,9 +95,23 @@ DATABASES = {
         'USER': DB_USER,
         'PASSWORD': DB_PASSWORD,
         'HOST': DB_HOST,
-        'PORT': DB_PORT,
+        'PORT': DB_PORT
     }
 }
+try:
+    if env('DJANGO_ENV') == 'test':
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': 'vigilantenigma',
+                'USER': 'vigilantenigma',
+                'PASSWORD': DB_PASSWORD,
+                'HOST': '18.118.196.239',
+                'PORT': DB_PORT
+            }
+        }
+except:
+    pass
 
 
 # Password validation
